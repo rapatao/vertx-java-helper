@@ -1,6 +1,7 @@
 package com.rapatao.vertx.eventbus.future;
 
 import com.rapatao.vertx.eventbus.future.exception.ProxyHelperException;
+import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.ext.unit.Async;
@@ -9,6 +10,7 @@ import io.vertx.ext.unit.junit.VertxUnitRunner;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,18 +39,7 @@ public class ExceptionSerializationTest {
         final Async async = context.async();
         ServiceRegistry.toEventBus(vertx.eventBus()).to(new ServiceImpl()).registry();
         final Service service = ProxyCreator.toEventBus(vertx.eventBus()).asSend(Service.class);
-        service.failWithThrow().setHandler(handler -> {
-                    try {
-                        context.assertFalse(handler.succeeded());
-                        context.assertEquals(ProxyHelperException.class, handler.cause().getClass());
-                        ProxyHelperException exception = (ProxyHelperException) handler.cause();
-                        context.assertNotNull(exception.getStackTraceElements());
-                    } catch (Exception e) {
-                        context.fail();
-                    } finally {
-                        async.complete();
-                    }
-                }
+        service.failWithThrow().setHandler(handler -> doTest(async, handler)
         );
     }
 
@@ -57,19 +48,21 @@ public class ExceptionSerializationTest {
         final Async async = context.async();
         ServiceRegistry.toEventBus(vertx.eventBus()).to(new ServiceImpl()).registry();
         final Service service = ProxyCreator.toEventBus(vertx.eventBus()).asSend(Service.class);
-        service.failFuture().setHandler(handler -> {
-                    try {
-                        context.assertFalse(handler.succeeded());
-                        context.assertEquals(ProxyHelperException.class, handler.cause().getClass());
-                        ProxyHelperException exception = (ProxyHelperException) handler.cause();
-                        context.assertNotNull(exception.getStackTraceElements());
-                    } catch (Exception e) {
-                        context.fail();
-                    } finally {
-                        async.complete();
-                    }
-                }
+        service.failFuture().setHandler(handler -> doTest(async, handler)
         );
+    }
+
+    private void doTest(Async async, AsyncResult<String> handler) {
+        try {
+            Assert.assertFalse(handler.succeeded());
+            Assert.assertEquals(ProxyHelperException.class, handler.cause().getClass());
+            ProxyHelperException exception = (ProxyHelperException) handler.cause();
+            Assert.assertNotNull(exception.getStackTraceElements());
+        } catch (Exception e) {
+            Assert.fail(e.getMessage());
+        } finally {
+            async.complete();
+        }
     }
 
 
