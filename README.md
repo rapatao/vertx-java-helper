@@ -1,0 +1,2 @@
+# vertx-java-helper
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b18900caf6324d08840cd97897677592)](https://www.codacy.com/app/rapatao/vertx-java-helper?utm_source=github.com&utm_medium=referral&utm_content=rapatao/vertx-java-helper&utm_campaign=badger)
