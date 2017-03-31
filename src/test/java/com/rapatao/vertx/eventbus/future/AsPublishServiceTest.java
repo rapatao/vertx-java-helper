@@ -5,6 +5,7 @@ import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +45,14 @@ public class AsPublishServiceTest {
         service.noArgs();
         service.oneArg("123");
         service.twoArgs("123", 321L);
+
+        while (!noArgAsync.isCompleted() || !oneArgAsync.isCompleted() || !twoArgsAsync.isCompleted()) {
+            // wait...
+        }
+
+        Assert.assertTrue(noArgAsync.isCompleted());
+        Assert.assertTrue(oneArgAsync.isCompleted());
+        Assert.assertTrue(twoArgsAsync.isCompleted());
     }
 
 
@@ -64,13 +73,14 @@ public class AsPublishServiceTest {
 
         @Override
         public void oneArg(String arg) {
-            testContext.assertTrue(arg.equals("123"));
+            testContext.assertEquals(arg, "123");
             oneArgAsync.complete();
         }
 
         @Override
         public void twoArgs(String arg1, Long arg2) {
-            testContext.assertTrue(arg1.equals("123") && arg2.equals(321L));
+            testContext.assertEquals(arg1, "123");
+            testContext.assertEquals(arg2, 321L);
             twoArgsAsync.complete();
         }
 

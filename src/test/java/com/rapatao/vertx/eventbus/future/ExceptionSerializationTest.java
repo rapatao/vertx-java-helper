@@ -92,7 +92,7 @@ public class ExceptionSerializationTest {
 
     public static class ServiceImpl implements Service {
 
-        final TestException testException = new TestException(new String[]{"1", "2"});
+        private final TestException testException = new TestException(new String[]{"1", "2"});
 
         @Override
         public Future<String> failWithThrow() {
