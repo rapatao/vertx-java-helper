@@ -1,6 +1,7 @@
 package com.rapatao.vertx.handler;
 
 import io.vertx.core.AsyncResult;
+import io.vertx.core.Future;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.Assert;
@@ -55,12 +56,6 @@ public class AsyncHandlerTest {
         }
     };
 
-    @Setter
-    @Getter
-    private final class TestUtil {
-        private String result;
-    }
-
     @Test
     public void shouldRunSuccess() {
         final TestUtil testUtil = new TestUtil();
@@ -89,6 +84,15 @@ public class AsyncHandlerTest {
                 .build();
         asyncHandler.handle(SUCCESS_RESULT);
         Assert.assertEquals("completed", testUtil.getResult());
+
+
+        Future<String> future = Future.future();
+        future.setHandler(AsyncHandler.<String>builder()
+                .onSuccess(result -> System.out.println(result))
+                .onFail(exception -> System.err.println(exception.getMessage()))
+                .onComplete(() -> System.out.println("complete"))
+                .build());
     }
 
 }
+
