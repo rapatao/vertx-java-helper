@@ -37,13 +37,15 @@ class EventBusConsumerHandler {
                 parameters.add(Json.decodeValue(arguments.getString(i), attributes[i]));
             }
             final Future<Object> future = (Future<Object>) method.invoke(instance, parameters.toArray());
-            future.setHandler(futureHandler -> {
-                if (futureHandler.succeeded()) {
-                    handler.reply(Json.encode(futureHandler.result()));
-                } else {
-                    handleFail(handler, future);
-                }
-            });
+            if (future != null) {
+                future.setHandler(futureHandler -> {
+                    if (futureHandler.succeeded()) {
+                        handler.reply(Json.encode(futureHandler.result()));
+                    } else {
+                        handleFail(handler, future);
+                    }
+                });
+            }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             handleFail(handler, Future.failedFuture(e));
