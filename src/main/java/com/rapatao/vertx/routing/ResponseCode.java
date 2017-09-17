@@ -1,51 +1,50 @@
 package com.rapatao.vertx.routing;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 /**
  * Created by rapatao on 31/03/17.
  */
-@AllArgsConstructor
-@Getter
-public enum ResponseCode {
+public interface ResponseCode {
 
-    Continue(100),
-    SwitchingProtocols(101),
-    Ok(200),
-    Created(201),
-    Accepted(202),
-    NonAuthoritative(203),
-    NoContent(204),
-    ResetContent(205),
-    MultipleChoices(300),
-    MovedPermanently(301),
-    Found(302),
-    SeeOther(303),
-    UseProxy(305),
-    TemporaryRedirect(307),
-    BadRequest(400),
-    PaymentRequired(402),
-    Forbidden(403),
-    NotFound(404),
-    MethodNotAllowed(405),
-    NotAcceptable(406),
-    RequestTimeout(408),
-    Conflict(409),
-    Gone(410),
-    LengthRequired(411),
-    PayloadTooLarge(413),
-    URITooLong(414),
-    UnsupportedMediaType(415),
-    ExpectationFailed(417),
-    UpgradeRequired(426),
-    InternalServerError(500),
-    NotImplemented(501),
-    BadGateway(502),
-    ServiceUnavailable(503),
-    GatewayTimeout(504),
-    HTTPVersionNotSupported(505);
+    int Continue = 100;
+    int SwitchingProtocols = 101;
 
-    private int value;
+    int Ok = 200;
+    int Created = 201;
+    int Accepted = 202;
+    int NonAuthoritativeInformation = 203;
+    int NoContent = 204;
+    int ResetContent = 205;
+
+    int MultipleChoices = 300;
+    int MovedPermanently = 301;
+    int Found = 302;
+    int SeeOther = 303;
+    int UseProxy = 305;
+    int SwitchProxy = 306;
+    int TemporaryRedirect = 307;
+
+    int BadRequest = 400;
+    int Unauthorized = 401;
+    int PaymentRequired = 402;
+    int Forbidden = 403;
+    int NotFound = 404;
+    int MethodNotAllowed = 405;
+    int NotAcceptable = 406;
+    int RequestTimeout = 408;
+    int Conflict = 409;
+    int Gone = 410;
+    int LengthRequired = 411;
+    int PayloadTooLarge = 413;
+    int URITooLong = 414;
+    int UnsupportedMediaType = 415;
+    int ExpectationFailed = 417;
+    int UpgradeRequired = 426;
+
+    int InternalServerError = 500;
+    int NotImplemented = 501;
+    int BadGateway = 502;
+    int ServiceUnavailable = 503;
+    int GatewayTimeout = 504;
+    int HTTPVersionNotSupported = 505;
 
 }

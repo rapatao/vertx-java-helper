@@ -37,10 +37,10 @@ public class AsyncTest {
     public void shouldConsumeAndReturnExpectedValue(TestContext context) throws InterruptedException {
         final Async async = context.async();
         final TestService testService = ProxyCreator.toEventBus(vertx.eventBus()).asSend(TestService.class);
-        testService.t1("123", AsyncHandler.<String>builder()
+        testService.t1("123", AsyncHandler.builder()
                 .onSuccess(t123 -> {
                     Assert.assertEquals("123-ok", t123);
-                    testService.t1("321", AsyncHandler.<String>builder()
+                    testService.t1("321", AsyncHandler.builder()
                             .onSuccess(t321 -> Assert.assertEquals("321-ok", t321))
                             .onComplete(async::complete)
                             .build());
@@ -52,7 +52,7 @@ public class AsyncTest {
     public void shouldConsumeMultipleArguments(TestContext context) {
         final Async async = context.async();
         final TestService testService = ProxyCreator.toEventBus(vertx.eventBus()).asSend(TestService.class);
-        testService.t1t2("123", "456", AsyncHandler.<String>builder()
+        testService.t1t2("123", "456", AsyncHandler.builder()
                 .onSuccess(t -> Assert.assertEquals("123-456-ok", t))
                 .onComplete(async::complete)
                 .build());

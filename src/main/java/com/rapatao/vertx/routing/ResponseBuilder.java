@@ -17,7 +17,7 @@ public class ResponseBuilder {
 
     private final RoutingContext routingContext;
     private MultiMap header = null;
-    private ResponseCode responseCode = null;
+    private Integer responseCode = null;
     private Object content = null;
 
     public static ResponseBuilder of(final RoutingContext routingContext) {
@@ -41,7 +41,7 @@ public class ResponseBuilder {
         return this;
     }
 
-    public ResponseBuilder responseCode(final ResponseCode responseCode) {
+    public ResponseBuilder responseCode(final Integer responseCode) {
         this.responseCode = responseCode;
         return this;
     }
@@ -54,7 +54,7 @@ public class ResponseBuilder {
     public void build() {
         final HttpServerResponse response = routingContext.response();
         response.headers().addAll(Optional.ofNullable(this.header).orElse(defaultHeader()));
-        response.setStatusCode(Optional.ofNullable(this.responseCode).orElse(ResponseCode.Ok).getValue());
+        response.setStatusCode(Optional.ofNullable(this.responseCode).orElse(ResponseCode.Ok));
 
         final Optional<Object> content = Optional.ofNullable(this.content);
         if (content.isPresent()) {

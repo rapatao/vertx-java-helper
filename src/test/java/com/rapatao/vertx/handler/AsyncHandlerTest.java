@@ -2,8 +2,6 @@ package com.rapatao.vertx.handler;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
-import lombok.Getter;
-import lombok.Setter;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -59,7 +57,7 @@ public class AsyncHandlerTest {
     @Test
     public void shouldRunSuccess() {
         final TestUtil testUtil = new TestUtil();
-        final AsyncHandler<String> asyncHandler = AsyncHandler.<String>builder()
+        final AsyncHandler<String> asyncHandler = AsyncHandler.builder()
                 .onSuccess(testUtil::setResult)
                 .build();
         asyncHandler.handle(SUCCESS_RESULT);
@@ -69,7 +67,7 @@ public class AsyncHandlerTest {
     @Test
     public void shouldRunFail() {
         final TestUtil testUtil = new TestUtil();
-        final AsyncHandler<String> asyncHandler = AsyncHandler.<String>builder()
+        final AsyncHandler<String> asyncHandler = AsyncHandler.builder()
                 .onFail(f -> testUtil.setResult(f.getMessage()))
                 .build();
         asyncHandler.handle(FAILED_RESULT);
@@ -79,7 +77,7 @@ public class AsyncHandlerTest {
     @Test
     public void shouldRunComplete() {
         final TestUtil testUtil = new TestUtil();
-        final AsyncHandler<String> asyncHandler = AsyncHandler.<String>builder()
+        final AsyncHandler<String> asyncHandler = AsyncHandler.builder()
                 .onComplete(() -> testUtil.setResult("completed"))
                 .build();
         asyncHandler.handle(SUCCESS_RESULT);
@@ -87,8 +85,8 @@ public class AsyncHandlerTest {
 
 
         Future<String> future = Future.future();
-        future.setHandler(AsyncHandler.<String>builder()
-                .onSuccess(result -> System.out.println(result))
+        future.setHandler(AsyncHandler.builder()
+                .onSuccess(System.out::println)
                 .onFail(exception -> System.err.println(exception.getMessage()))
                 .onComplete(() -> System.out.println("complete"))
                 .build());
