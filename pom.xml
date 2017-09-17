@@ -3,7 +3,7 @@
 
     <groupId>com.rapatao.vertx</groupId>
     <artifactId>vertx-java-helper</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
     <packaging>jar</packaging>
 
     <name>Vert.x Java Helper</name>
@@ -30,7 +30,7 @@
         <connection>scm:git:git://github.com/rapatao/vertx-java-helper.git</connection>
         <developerConnection>scm:git:ssh://github.com/rapatao/vertx-java-helper.git</developerConnection>
         <url>http://github.com/rapatao/vertx-java-helper</url>
-        <tag>HEAD</tag>
+        <tag>vertx-java-helper-0.0.3</tag>
     </scm>
 
     <properties>
