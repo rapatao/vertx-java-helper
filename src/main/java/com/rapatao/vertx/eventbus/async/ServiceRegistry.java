@@ -52,7 +52,6 @@ public class ServiceRegistry {
      *
      * @param instance the service implementation instance.
      * @param <T>      the service type.
-     * @return the ServiceRegistry instance.
      */
     public <T> void to(T instance) {
         this.service = instance;
