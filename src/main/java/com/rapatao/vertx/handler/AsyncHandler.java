@@ -82,9 +82,9 @@ public class AsyncHandler<T> implements Handler<AsyncResult<T>> {
 
         public <T> AsyncHandler<T> build() {
             return new AsyncHandler<>(
-                    Optional.ofNullable(onSuccessHandler).orElse(DEFAULT_SUCCESS_HANDLER),
-                    Optional.ofNullable(onFailHandler).orElse(DEFAULT_FAIL_HANDLER),
-                    Optional.ofNullable(onCompleteHandler).orElse(DEFAULT_COMPLETE_HANDLER));
+                    Optional.ofNullable(this.onSuccessHandler).orElse(DEFAULT_SUCCESS_HANDLER),
+                    Optional.ofNullable(this.onFailHandler).orElse(DEFAULT_FAIL_HANDLER),
+                    Optional.ofNullable(this.onCompleteHandler).orElse(DEFAULT_COMPLETE_HANDLER));
         }
 
     }

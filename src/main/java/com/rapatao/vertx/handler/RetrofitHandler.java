@@ -34,7 +34,7 @@ public class RetrofitHandler<T> implements Callback<T> {
         onFail.handle(throwable);
     }
 
-    public RetrofitHandlerBuilder builder() {
+    public static RetrofitHandlerBuilder builder() {
         return new RetrofitHandlerBuilder();
     }
 
