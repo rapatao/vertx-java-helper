@@ -1,5 +1,6 @@
 package com.rapatao.vertx.handler;
 
+import io.vertx.core.Future;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import retrofit2.Call;
@@ -86,8 +87,8 @@ public class RetrofitHandler<T> implements Callback<T> {
             return this;
         }
 
-        public RetrofitHandler build() {
-            return new RetrofitHandler(
+        public <T> RetrofitHandler<T> build() {
+            return new RetrofitHandler<>(
                     Optional.ofNullable(responseHandler).orElse(DEFAULT_HANDLER),
                     Optional.ofNullable(onFailure).orElse(DEFAULT_FAILURE_HANDLER),
                     Optional.ofNullable(onComplete).orElse(DEFAULT_COMPLETE_HANDLER)
