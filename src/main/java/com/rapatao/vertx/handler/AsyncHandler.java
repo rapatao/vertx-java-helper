@@ -27,6 +27,8 @@ public class AsyncHandler<T> implements Handler<AsyncResult<T>> {
                 final Throwable cause = event.cause();
                 onFail.handle(cause);
             }
+        } catch (Exception cause) {
+            onFail.handle(cause);
         } finally {
             onComplete.handle();
         }

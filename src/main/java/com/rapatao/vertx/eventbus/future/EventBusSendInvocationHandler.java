@@ -17,6 +17,7 @@ import java.util.Arrays;
  * Created by rapatao on 15/09/16.
  */
 @RequiredArgsConstructor
+@Deprecated
 class EventBusSendInvocationHandler implements InvocationHandler {
 
     private final EventBus eventBus;

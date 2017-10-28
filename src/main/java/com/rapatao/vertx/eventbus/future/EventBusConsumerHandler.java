@@ -15,6 +15,7 @@ import java.util.Optional;
 /**
  * Created by rapatao on 15/09/16.
  */
+@Deprecated
 class EventBusConsumerHandler {
 
     private final static Logger logger = LoggerFactory.getLogger(EventBusConsumerHandler.class);

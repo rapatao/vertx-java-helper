@@ -13,6 +13,7 @@ import java.util.Arrays;
  * Created by rapatao on 15/09/16.
  */
 @RequiredArgsConstructor
+@Deprecated
 class EventBusPublishInvocationHandler implements InvocationHandler {
 
     private final EventBus eventBus;

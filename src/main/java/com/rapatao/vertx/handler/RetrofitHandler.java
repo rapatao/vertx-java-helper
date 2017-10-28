@@ -1,6 +1,5 @@
 package com.rapatao.vertx.handler;
 
-import io.vertx.core.Future;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import retrofit2.Call;
@@ -19,6 +18,10 @@ public class RetrofitHandler<T> implements Callback<T> {
     private final FailHandler onFail;
     private final CompleteHandler onComplete;
 
+    public static RetrofitHandlerBuilder builder() {
+        return new RetrofitHandlerBuilder();
+    }
+
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
         try {
@@ -33,10 +36,6 @@ public class RetrofitHandler<T> implements Callback<T> {
     @Override
     public void onFailure(Call<T> call, Throwable throwable) {
         onFail.handle(throwable);
-    }
-
-    public static RetrofitHandlerBuilder builder() {
-        return new RetrofitHandlerBuilder();
     }
 
     @FunctionalInterface

@@ -5,6 +5,7 @@ import lombok.Getter;
 /**
  * Created by rapatao on 22/11/16.
  */
+@Deprecated
 public class ProxyHelperException extends Exception {
 
     @Getter

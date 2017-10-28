@@ -16,6 +16,7 @@ import java.lang.reflect.Proxy;
  * Created by rapatao on 15/09/16.
  */
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Deprecated
 public class ProxyCreator {
 
     private final EventBus eventBus;

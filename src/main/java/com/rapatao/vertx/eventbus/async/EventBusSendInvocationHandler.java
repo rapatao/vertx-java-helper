@@ -17,6 +17,7 @@ import java.util.Optional;
  * Created by rapatao on 15/09/16.
  */
 @RequiredArgsConstructor
+@Deprecated
 class EventBusSendInvocationHandler extends AbstractEventBusInvocationHandler implements InvocationHandler {
 
     private final EventBus eventBus;

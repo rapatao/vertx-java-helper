@@ -18,6 +18,7 @@ import java.util.Optional;
  * Created by rapatao on 31/03/17
  */
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Deprecated
 public class ServiceRegistry {
 
     private final static Logger logger = LoggerFactory.getLogger(ServiceRegistry.class);

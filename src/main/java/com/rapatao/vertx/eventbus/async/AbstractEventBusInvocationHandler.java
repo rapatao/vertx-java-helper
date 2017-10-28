@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 /**
  * Created by rapatao on 01/04/17.
  */
+@Deprecated
 class AbstractEventBusInvocationHandler {
 
     public void fillArguments(Method method, Object[] args, JsonArray argumentTypes, JsonArray argumentValues) {

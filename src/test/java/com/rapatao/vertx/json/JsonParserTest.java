@@ -59,7 +59,7 @@ public class JsonParserTest {
     @Test(expected = JsonParserException.class)
     public void shouldFailDecode() {
         String json = "{\"_id\":\"1\",\"value\":}";
-        TestUtil decode = JsonParser.decode(json, TestUtil.class);
+        JsonParser.decode(json, TestUtil.class);
     }
 
 }

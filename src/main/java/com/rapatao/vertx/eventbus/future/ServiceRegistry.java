@@ -20,6 +20,7 @@ import java.util.List;
  * Created by rapatao on 13/09/16
  */
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Deprecated
 public class ServiceRegistry {
 
     private final static Logger logger = LoggerFactory.getLogger(ServiceRegistry.class);

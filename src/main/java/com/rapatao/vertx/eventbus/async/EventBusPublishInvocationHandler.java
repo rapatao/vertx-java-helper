@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
  * Created by rapatao on 15/09/16.
  */
 @RequiredArgsConstructor
+@Deprecated
 class EventBusPublishInvocationHandler extends AbstractEventBusInvocationHandler implements InvocationHandler {
 
     private final EventBus eventBus;

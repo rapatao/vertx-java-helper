@@ -10,7 +10,7 @@ Add the dependency to your project and use the provided methods to register and 
 <dependency>
     <groupId>com.rapatao.vertx</groupId>
         <artifactId>vertx-java-helper</artifactId>
-    <version>{{vertx-java-helper.version}}</version>
+    <version>${vertx-java-helper.version}</version>
 </dependency>
 ```
 
@@ -23,4 +23,23 @@ The following repository allows you to access the dependency in OSSRH directly, 
         <url>https://oss.sonatype.org/content/groups/public/</url>
     </repository>
 </repositories>
+```
+
+## Usage
+
+The following example shows how to handle a Future<T>:
+
+```java
+final Future<Object> future = ...
+
+future.setHandler(AsyncHandler.builder()
+    .onSuccess(success -> {
+        // handle success event
+    })
+    .onFail(fail -> {
+        // handle fail event
+    })
+    .onComplete(() -> {
+        // handle complete event
+    }).build());
 ```

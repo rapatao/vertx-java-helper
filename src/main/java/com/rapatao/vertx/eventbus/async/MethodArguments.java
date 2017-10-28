@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
  */
 @Builder
 @Getter
+@Deprecated
 class MethodArguments {
     private final Method method;
     private final Class<?>[] arguments;
