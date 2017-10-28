@@ -91,27 +91,6 @@ public class AsyncHandlerTest {
                 .onComplete(() -> System.out.println("complete"))
                 .build());
 
-
-        Future<Object> f = null;
-
-        f.setHandler(handler -> {
-            if (handler.succeeded()) {
-                // handle succeeded
-            } else {
-                // handle failed
-            }
-        });
-
-        f.setHandler(AsyncHandler.builder()
-                .onSuccess(success -> {
-                    // handle success event
-                })
-                .onFail(fail -> {
-                    // handle fail event
-                })
-                .onComplete(() -> {
-                    // handle complete event
-                }).build());
     }
 
 }
